@@ -37,22 +37,10 @@ fun ToDoScreen(navController: NavController) {
     val todoList by viewModel.todoList.collectAsState()
 
 
-
     LaunchedEffect(Unit) {
         viewModel.getTodo()
 
     }
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Todo",
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-    }
-
 
 
     LazyColumn(

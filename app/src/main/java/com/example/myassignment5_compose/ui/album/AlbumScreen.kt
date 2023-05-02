@@ -19,29 +19,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.myassignment5_compose.data.model.album.AlbumsItemModel
 import com.example.myassignment5_compose.data.remote.ApiDetails.albums
 
 @Composable
 fun AlbumScreen(
-    viewModel:AlbumviewModel= hiltViewModel(),
-){
+    navController: NavController,
+    viewModel: AlbumviewModel = hiltViewModel(),
+) {
     val albumList by viewModel.albumList.collectAsState()
 //    val viewModel= hiltViewModel<AlbumviewModel>()
 //    val albums by viewModel.albumList.collectAsState()
 
-    LaunchedEffect(Unit){
+    LaunchedEffect(Unit) {
         viewModel.getAlbum()
-    }
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Album",
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
     }
 
 
@@ -50,15 +42,15 @@ fun AlbumScreen(
             .fillMaxSize()
             .padding(top = 30.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
 
-) {
+    ) {
 
-    items(albumList) { album ->
+        items(albumList) { album ->
 
-        AlbumItem(album)
-        Spacer(modifier = Modifier.height(16.dp))
+            AlbumItem(album)
+            Spacer(modifier = Modifier.height(16.dp))
+        }
     }
 }
-    }
 
 @Composable
 fun AlbumItem(album: AlbumsItemModel) {

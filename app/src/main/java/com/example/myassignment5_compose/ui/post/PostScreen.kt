@@ -41,17 +41,6 @@ fun PostScreen(navController: NavController) {
 
 
     }
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Post",
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-    }
-
 
 
 

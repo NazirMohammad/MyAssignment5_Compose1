@@ -20,11 +20,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.myassignment5_compose.data.model.photos.PhotosItemModel
 
 @Composable
-fun PhotoScreen(
+fun PhotoScreen(navController: NavController,
     viewModel: PhotoViewModel = hiltViewModel(),
 ){
     val photoList by viewModel.photoList.collectAsState()
@@ -32,17 +33,6 @@ fun PhotoScreen(
     LaunchedEffect(Unit){
         viewModel.getAlbum()
     }
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Photo",
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-    }
-
 
 
     LazyColumn(

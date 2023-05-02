@@ -46,20 +46,6 @@ val navigateToDetails:(String)->Unit ={id ->
 
     }
 
-
-Column(
-modifier = Modifier.fillMaxWidth(),
-horizontalAlignment = Alignment.CenterHorizontally
-) {
-    Text(
-        text = "User",
-        textAlign = TextAlign.Center,
-        fontSize = 25.sp
-    )
-}
-
-
-
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()

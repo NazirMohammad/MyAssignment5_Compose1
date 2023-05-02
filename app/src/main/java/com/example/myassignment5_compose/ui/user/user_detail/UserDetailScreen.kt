@@ -4,6 +4,8 @@ import android.provider.ContactsContract
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -19,21 +21,46 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
 import coil.compose.rememberAsyncImagePainter
 import com.example.myassignment5_compose.data.model.user.UsersItemModel
+import com.example.myassignment5_compose.data.remote.ApiDetails.user
+import com.example.myassignment5_compose.navigationdrawer.NavigationItem
+import com.example.myassignment5_compose.ui.user.UserItem
 
 @Composable
-fun UserDetailScreen(id: Int, user: UsersItemModel, navController: NavController){
+fun UserDetailScreen(id: Int, user: UsersItemModel, navController: NavController,navHostController: NavHostController,viewmodel:UserDetailScreeen= hiltViewModel()) {
 
-    val viewModel= hiltViewModel<UserDetailScreeen>()
+    val viewModel = hiltViewModel<UserDetailScreeen>()
     val userItem: UsersItemModel by viewModel.userDetailss.collectAsState()
+    val navigateToUserDetailScreeen: (String) -> Unit = { id }
+    navController.navigate(
+        "${NavigationItem.UserDetail.route}/$id"
+
+    )
 
     viewModel.getUserID(id)
     UserDetailContent(userDetailss= userItem)
-
-
-
+//Column (modifier = Modifier.padding(top = 10.dp)
+//){
+//    LazyColumn(modifier = Modifier
+//        .padding(top = 10.dp)
+//    ){
+//
+//        items(id) {user->
+//            if (user!=null){
+//                user(userItem
+//            }
+//
+//        }
+//
+//        }
+//
+//    }
 }
+
+
 
 @Composable
 fun UserDetailContent(

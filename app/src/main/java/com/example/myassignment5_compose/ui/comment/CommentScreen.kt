@@ -19,26 +19,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.myassignment5_compose.data.model.comments.CommentsItemModel
 
 @Composable
-fun CommentScreen(viewModel: CommentViewModel= hiltViewModel(),
+fun CommentScreen(viewModel: CommentViewModel= hiltViewModel(),navController: NavController
 ){
     val commentList by viewModel.commentList.collectAsState()
 
     LaunchedEffect(Unit){
         viewModel.getComment()
     }
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Comments",
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-    }
+
 
     LazyColumn(modifier = Modifier
         .fillMaxSize()
